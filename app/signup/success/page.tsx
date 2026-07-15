@@ -15,6 +15,11 @@ export default async function SignupSuccessPage() {
           </div>
           <h1 className="text-xl font-black text-night">{t.auth.signupSuccessTitle}</h1>
           <p className="mt-2 text-sm leading-relaxed text-slatey">{t.auth.signupSuccessBody}</p>
+          <p className="mt-3 text-xs leading-relaxed text-slatey-2">
+            No email? Check spam. Free Supabase email is limited (~3–4/hour). For local
+            testing, disable &quot;Confirm email&quot; under Supabase → Authentication →
+            Providers → Email.
+          </p>
           <Link
             href="/login"
             className="mt-6 inline-flex h-11 items-center justify-center rounded-full bg-energy px-6 text-sm font-bold text-white hover:bg-blue-700"

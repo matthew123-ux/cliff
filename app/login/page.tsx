@@ -21,6 +21,13 @@ export default async function LoginPage({ searchParams }: Props) {
         {error && (
           <div className="mt-4 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
             {error}
+            {(error.toLowerCase().includes('email not confirmed') ||
+              error.toLowerCase().includes('confirm')) && (
+              <p className="mt-2 text-xs text-red-600">
+                Check your inbox (and spam) for the confirmation link. Or turn off
+                &quot;Confirm email&quot; in Supabase → Authentication → Providers → Email.
+              </p>
+            )}
           </div>
         )}
 
