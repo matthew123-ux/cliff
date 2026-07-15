@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import TopBar from '@/components/TopBar'
 import BottomNav from '@/components/BottomNav'
-import SubmitButton from '@/components/SubmitButton'
-import { signUp } from '@/app/actions/auth'
+import SignupForm from '@/components/SignupForm'
 import { getAppDict } from '@/lib/i18n'
 
 type Props = { searchParams: Promise<{ error?: string }> }
@@ -24,52 +23,15 @@ export default async function SignupPage({ searchParams }: Props) {
           </div>
         )}
 
-        <form action={signUp} className="mt-6 space-y-4">
-          <div className="grid grid-cols-2 gap-3">
-            <label className="block text-sm font-semibold text-night">
-              {t.auth.firstName}
-              <input
-                name="first_name"
-                required
-                autoComplete="given-name"
-                className="mt-1 w-full rounded-xl border border-mist-2 bg-white px-3 py-2.5 text-sm outline-none focus:border-energy"
-              />
-            </label>
-            <label className="block text-sm font-semibold text-night">
-              {t.auth.lastName}
-              <input
-                name="last_name"
-                required
-                autoComplete="family-name"
-                className="mt-1 w-full rounded-xl border border-mist-2 bg-white px-3 py-2.5 text-sm outline-none focus:border-energy"
-              />
-            </label>
-          </div>
-          <label className="block text-sm font-semibold text-night">
-            {t.auth.email}
-            <input
-              name="email"
-              type="email"
-              required
-              autoComplete="email"
-              className="mt-1 w-full rounded-xl border border-mist-2 bg-white px-3 py-2.5 text-sm outline-none focus:border-energy"
-            />
-          </label>
-          <label className="block text-sm font-semibold text-night">
-            {t.auth.password}
-            <input
-              name="password"
-              type="password"
-              required
-              minLength={8}
-              autoComplete="new-password"
-              className="mt-1 w-full rounded-xl border border-mist-2 bg-white px-3 py-2.5 text-sm outline-none focus:border-energy"
-            />
-          </label>
-          <SubmitButton className="flex h-11 w-full items-center justify-center rounded-full bg-energy text-sm font-bold text-white hover:bg-blue-700 disabled:opacity-60">
-            {t.auth.submitSignup}
-          </SubmitButton>
-        </form>
+        <SignupForm
+          labels={{
+            firstName: t.auth.firstName,
+            lastName: t.auth.lastName,
+            email: t.auth.email,
+            password: t.auth.password,
+            submit: t.auth.submitSignup,
+          }}
+        />
 
         <p className="mt-6 text-center text-sm text-slatey">
           {t.auth.hasAccount}{' '}

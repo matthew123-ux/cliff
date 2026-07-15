@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import TopBar from '@/components/TopBar'
 import BottomNav from '@/components/BottomNav'
-import SubmitButton from '@/components/SubmitButton'
-import { signIn } from '@/app/actions/auth'
+import LoginForm from '@/components/LoginForm'
 import { getAppDict } from '@/lib/i18n'
 
 type Props = { searchParams: Promise<{ error?: string }> }
@@ -21,46 +20,17 @@ export default async function LoginPage({ searchParams }: Props) {
         {error && (
           <div className="mt-4 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
             {error}
-            {(error.toLowerCase().includes('email not confirmed') ||
-              error.toLowerCase().includes('confirm')) && (
-              <p className="mt-2 text-xs text-red-600">
-                Check your inbox (and spam) for the confirmation link. Or turn off
-                &quot;Confirm email&quot; in Supabase → Authentication → Providers → Email.
-              </p>
-            )}
           </div>
         )}
 
-        <form action={signIn} className="mt-6 space-y-4">
-          <label className="block text-sm font-semibold text-night">
-            {t.auth.email}
-            <input
-              name="email"
-              type="email"
-              required
-              autoComplete="email"
-              className="mt-1 w-full rounded-xl border border-mist-2 bg-white px-3 py-2.5 text-sm outline-none focus:border-energy"
-            />
-          </label>
-          <label className="block text-sm font-semibold text-night">
-            {t.auth.password}
-            <input
-              name="password"
-              type="password"
-              required
-              autoComplete="current-password"
-              className="mt-1 w-full rounded-xl border border-mist-2 bg-white px-3 py-2.5 text-sm outline-none focus:border-energy"
-            />
-          </label>
-          <div className="text-end">
-            <Link href="/forgot-password" className="text-xs font-bold text-energy hover:underline">
-              {t.auth.forgot}
-            </Link>
-          </div>
-          <SubmitButton className="flex h-11 w-full items-center justify-center rounded-full bg-energy text-sm font-bold text-white hover:bg-blue-700 disabled:opacity-60">
-            {t.auth.submitLogin}
-          </SubmitButton>
-        </form>
+        <LoginForm
+          labels={{
+            email: t.auth.email,
+            password: t.auth.password,
+            submit: t.auth.submitLogin,
+            forgot: t.auth.forgot,
+          }}
+        />
 
         <p className="mt-6 text-center text-sm text-slatey">
           {t.auth.noAccount}{' '}

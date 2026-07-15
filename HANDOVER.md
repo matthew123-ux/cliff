@@ -2,8 +2,10 @@
 
 **Date:** 2026-07-15  
 **Project path:** `C:\Users\Owner\web-app`  
-**Status:** Supabase keys configured in `.env.local` (project `uepoomodlwsyorfxoeyy`).  
-**Still needed:** run `migrations/setup-all.sql` once in Supabase SQL Editor (API cannot run DDL with project keys alone).
+**GitHub:** https://github.com/matthew123-ux/cliff.git  
+**Live:** https://cliff-eta.vercel.app  
+**Status:** Deployed. Supabase SQL done.  
+**Next:** Auth URL config in Supabase + set NEXT_PUBLIC_SITE_URL on Vercel + smoke test signup.
 
 ## Stack
 
